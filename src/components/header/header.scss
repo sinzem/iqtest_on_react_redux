@@ -44,3 +44,37 @@
         background-color: rgb(105, 105, 105);
     }
 }
+
+@media (max-width: 1199px) {
+  
+}
+
+@media (max-width: 991px) {
+
+}
+
+@media (max-width: 767px) {
+  
+}
+
+@media (max-width: 575px) {
+    .header {
+        height: 46px;
+        &__img {
+            margin: 0 10px 0 15px;
+        }
+        &__label {
+            h2 {
+                font-size: 12px;
+            }
+        }
+    }
+    .hamburger {
+        width: 24px;
+        height: 17px;
+        margin: 14px 15px;
+        &__line {
+            height: 3px;
+        }
+    }
+}

@@ -1,16 +1,21 @@
 
 import { useSelector } from "react-redux";
 import { menuType } from "./menuSlice";
+import { setMenuState } from "./menuSlice";
+import { useDispatch } from "react-redux";
+
 
 const Menu = () => {
 
     const {menuState}: any = useSelector<menuType>(state => state.menuState); 
+
+    const dispatch = useDispatch();
     
     const menuActive = menuState ? "menu active" : "menu";
 
     return (
         <section className={menuActive}>
-            <div className="cross">
+            <div className="cross" onClick={() => dispatch(setMenuState())}>
                 <div className="cross__line"></div>
                 <div className="cross__line"></div>
             </div>
