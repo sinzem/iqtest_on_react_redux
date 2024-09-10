@@ -35,7 +35,7 @@ const Header: FC<headerProps> = (props) => {
                     <div className="hamburger__line"></div>
                 </div>
             </header>
-            <Menu />
+            {/* <Menu /> */}
         </>
       
     );

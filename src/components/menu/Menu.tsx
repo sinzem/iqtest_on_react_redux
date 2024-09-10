@@ -1,4 +1,4 @@
-
+import {NavLink} from "react-router-dom";
 import { useSelector } from "react-redux";
 import { menuType } from "./menuSlice";
 import { setMenuState } from "./menuSlice";
@@ -11,24 +11,24 @@ const Menu = () => {
 
     const dispatch = useDispatch();
     
-    const menuActive = menuState ? "menu active" : "menu";
+    const menuActive = menuState ? "active" : null;
 
     return (
-        <section className={menuActive}>
-            <div className="cross" onClick={() => dispatch(setMenuState())}>
+        <section className={"menu " + menuActive}>
+            <div className={"cross " + menuActive} onClick={() => dispatch(setMenuState())}>
                 <div className="cross__line"></div>
                 <div className="cross__line"></div>
             </div>
             <nav className="menu__nav">
                 <ul>
                     <li>
-                        <a className="to_main" href="#">Главная</a>
+                        <NavLink end to="/" className="to_main" onClick={() => dispatch(setMenuState())}>Главная</NavLink>
                     </li>
                     <li>
                         <a href="#">Информация о тесте</a>
                     </li>
                     <li>
-                        <a className="go_test" href="#">Пройти тест</a>
+                        <NavLink end to="/test" className="go_test" onClick={() => dispatch(setMenuState())}>Пройти тест</NavLink>
                     </li>
                 </ul>
             </nav>
