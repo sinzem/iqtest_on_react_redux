@@ -7,7 +7,20 @@ import breckets from "../../assets/img/breckets.png";
 import firstPageBrain from "../../assets/img/first-page_brain.png";
 import backgroundLightning from "../../assets/img/background_lightning.png";
 
+import "../../styles/style.scss";
+import { useRef } from "react";
+
 const Main = () => {
+
+    
+    const informBlock = useRef<HTMLDivElement>(null);
+
+    const scrollTos = () => {
+        // let informBlockOffset: number | undefined = informBlock?.current?.offsetTop;
+        console.log("ok");
+        window.scrollTo(0, 100);
+    }
+
     return (
         <div>
             <Header />
@@ -26,13 +39,13 @@ const Main = () => {
                         <h3 className="description slogan__description slogan__description_bottom">
                             и улучшению финансового благосостояния и личной жизни
                         </h3>
-                        <div className="slogan__link">
+                        <div className="slogan__link" onClick={scrollTos}>
                             <a href="#"><img src={arrowUp} alt="arrow" /></a>
                         </div>
                         <div className="slogan__link__label">Подробнее</div>
                     </div>
                 </div>
-                <div className="quotation">
+                <div ref={informBlock} className="quotation">
                     <div className="quotation__sheet_middle">
                         <img src={rectangle12} alt="space" />
                     </div>
