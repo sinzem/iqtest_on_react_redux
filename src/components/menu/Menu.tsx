@@ -1,9 +1,7 @@
 import {NavLink} from "react-router-dom";
-import { useSelector } from "react-redux";
-import { menuType } from "./menuSlice";
-import { setMenuState } from "./menuSlice";
-import { useDispatch } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { menuType, setMenuState } from "./menuSlice";
+import { setTestPageActive, setTestPageNotActive } from "../../pages/test/testPageSlice";
 
 const Menu = () => {
 
@@ -11,6 +9,23 @@ const Menu = () => {
 
     const dispatch = useDispatch();
     
+    const toTestPage = () => {
+        dispatch(setMenuState());
+        dispatch(setTestPageActive());
+    }
+
+    const toMainPage = () => {
+        dispatch(setMenuState());
+        dispatch(setTestPageNotActive());
+    }
+
+    const toInformBlock = () => {
+        let windowHeight = document.documentElement.clientHeight;
+        toMainPage();
+        window.scrollTo(0, windowHeight)
+    }
+    
+
     const menuActive = menuState ? "active" : null;
 
     return (
@@ -22,13 +37,14 @@ const Menu = () => {
             <nav className="menu__nav">
                 <ul>
                     <li>
-                        <NavLink end to="/" className="to_main" onClick={() => dispatch(setMenuState())}>Главная</NavLink>
+                        <NavLink end to="/" className="to_main" onClick={toMainPage}>Главная</NavLink>
                     </li>
                     <li>
-                        <a href="#">Информация о тесте</a>
+                        {/* <a href="#">Информация о тесте</a> */}
+                        <NavLink to="/" className="to_main" onClick={toInformBlock}>Информация о тесте</NavLink>
                     </li>
                     <li>
-                        <NavLink end to="/test" className="go_test" onClick={() => dispatch(setMenuState())}>Пройти тест</NavLink>
+                        <NavLink end to="/test" className="go_test" onClick={toTestPage}>Пройти тест</NavLink>
                     </li>
                 </ul>
             </nav>

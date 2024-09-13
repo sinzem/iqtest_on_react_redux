@@ -4,12 +4,20 @@
     background-color: rgb(39, 39, 39);
     display: flex;
     &__title {
+        position: relative;
         color: white;
         flex-grow: 1;
         &__wrap {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            transition: all .9s ease;
             display: flex;
             height: 100%;
             width: 100%;
+            &.active {
+                transform: translateX(100%);
+            }
         }
     }
     &__img {

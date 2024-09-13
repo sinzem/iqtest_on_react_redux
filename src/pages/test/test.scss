@@ -1,0 +1,17 @@
+.test_page {
+    min-height: 100.1vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.test {
+    height: calc(100.1vh - 60px);
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    right: -100%;
+    transition: all .6s ease;
+    &.active {
+        transform: translateX(-100%);
+    }
+}

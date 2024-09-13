@@ -1,4 +1,8 @@
-import Header from "../../components/header/Header";
+import { useRef } from "react";
+import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setTestPageActive } from "../test/testPageSlice";
+
 import blueBrain from "../../assets/img/blue_brain.png";
 import arrowUp from "../../assets/img/arrow_up.png";
 import rectangle12 from "../../assets/img/rectangle_12.png";
@@ -7,23 +11,25 @@ import breckets from "../../assets/img/breckets.png";
 import firstPageBrain from "../../assets/img/first-page_brain.png";
 import backgroundLightning from "../../assets/img/background_lightning.png";
 
+import Header from "../../components/header/Header";
+
 import "../../styles/style.scss";
-import { useRef } from "react";
 
 const Main = () => {
 
-    
+    const dispatch = useDispatch();
     const informBlock = useRef<HTMLDivElement>(null);
 
-    const scrollTos = () => {
-        // let informBlockOffset: number | undefined = informBlock?.current?.offsetTop;
-        console.log("ok");
-        window.scrollTo(0, 100);
+    const scrollToInform = () => {
+        informBlock?.current?.scrollIntoView({ block: "start", behavior: "smooth" });
     }
 
     return (
         <div>
             <Header />
+            {/* <button onClick={() => window.scrollTo(0, 2000)} className="button slogan__button go_test">
+                            Пройти тест
+                        </button> */}
             <section className="main">
                 <div className="slogan">
                     <div className="slogan__wrap">
@@ -32,20 +38,25 @@ const Main = () => {
                         <div className="slogan__img">
                             <img src={blueBrain} alt="brain" />
                         </div>
-                        <button className="button slogan__button go_test">Пройти тест</button>
+                        <NavLink end 
+                                 to="/test" 
+                                 onClick={() => dispatch(setTestPageActive())}
+                                 className="button slogan__button go_test">
+                            Пройти тест
+                        </NavLink>
                         <h3 className="description slogan__description slogan__description_top">
                             И получите рекомендации по развитию своего интеллекта
                         </h3>
                         <h3 className="description slogan__description slogan__description_bottom">
                             и улучшению финансового благосостояния и личной жизни
                         </h3>
-                        <div className="slogan__link" onClick={scrollTos}>
-                            <a href="#"><img src={arrowUp} alt="arrow" /></a>
+                        <div className="slogan__link" onClick={scrollToInform} >
+                            <button><img src={arrowUp} alt="arrow" /></button> 
                         </div>
                         <div className="slogan__link__label">Подробнее</div>
                     </div>
                 </div>
-                <div ref={informBlock} className="quotation">
+                <div id="information" ref={informBlock} className="quotation">
                     <div className="quotation__sheet_middle">
                         <img src={rectangle12} alt="space" />
                     </div>
@@ -74,7 +85,12 @@ const Main = () => {
                     <div className="promises__img">
                         <img src={firstPageBrain} alt="brain_schema" />
                     </div>
-                    <button className="button promises__button go_test">Пройти тест</button>
+                    <NavLink end 
+                             to="/test" 
+                             onClick={() => dispatch(setTestPageActive())}
+                             className="button slogan__button go_test">
+                                Пройти тест
+                    </NavLink>
                 </div>
                 <div className="final">
                     <div className="description final__description final__description_top">
@@ -83,7 +99,10 @@ const Main = () => {
                     <div className="description final__description final__description_bottom">
                         <p>Профессиональная интерпретация и детально <span>проработанные рекомендации</span> позволят вам качественно <span>изменить все аспекты своей жизни:</span> от финансового до любовного.</p>
                     </div>
-                    <button className="button final__button go_test go_test">Пройти тест</button>
+                    <NavLink end 
+                             to="/test" 
+                             onClick={() => dispatch(setTestPageActive())}
+                             className="button final__button go_test go_test">Пройти тест</NavLink>
                     <div className="final__copy">
                         <p>&copy;<span></span>2019</p>
                     </div>
