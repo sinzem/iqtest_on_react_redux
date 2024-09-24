@@ -1,12 +1,12 @@
 import {NavLink} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { menuType, setMenuState } from "./menuSlice";
+import { menuType, setMenuState, setToInform } from "./menuSlice";
 import { setTestPageActive, setTestPageNotActive } from "../../pages/test/testPageSlice";
 
 const Menu = () => {
 
     const {menuState}: any = useSelector<menuType>(state => state.menuState); 
-
+  
     const dispatch = useDispatch();
     
     const toTestPage = () => {
@@ -20,9 +20,8 @@ const Menu = () => {
     }
 
     const toInformBlock = () => {
-        let windowHeight = document.documentElement.clientHeight;
-        toMainPage();
-        window.scrollTo(0, windowHeight)
+        dispatch(setToInform());
+        dispatch(setMenuState());
     }
     
 
@@ -40,7 +39,6 @@ const Menu = () => {
                         <NavLink end to="/" className="to_main" onClick={toMainPage}>Главная</NavLink>
                     </li>
                     <li>
-                        {/* <a href="#">Информация о тесте</a> */}
                         <NavLink to="/" className="to_main" onClick={toInformBlock}>Информация о тесте</NavLink>
                     </li>
                     <li>

@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setTestPageActive } from "../test/testPageSlice";
+import { menuType, unsetToInform } from "../../components/menu/menuSlice";
 
 import blueBrain from "../../assets/img/blue_brain.png";
 import arrowUp from "../../assets/img/arrow_up.png";
@@ -19,6 +20,14 @@ const Main = () => {
 
     const dispatch = useDispatch();
     const informBlock = useRef<HTMLDivElement>(null);
+    const {toInform}: any = useSelector<menuType>(state => state.menuState); 
+
+    useEffect(() => {
+        if(toInform) {
+            scrollToInform();
+            dispatch(unsetToInform());
+        }
+    }, [toInform])
 
     const scrollToInform = () => {
         informBlock?.current?.scrollIntoView({ block: "start", behavior: "smooth" });
@@ -27,9 +36,6 @@ const Main = () => {
     return (
         <div>
             <Header />
-            {/* <button onClick={() => window.scrollTo(0, 2000)} className="button slogan__button go_test">
-                            Пройти тест
-                        </button> */}
             <section className="main">
                 <div className="slogan">
                     <div className="slogan__wrap">
