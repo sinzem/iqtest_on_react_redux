@@ -18,7 +18,15 @@ const Test = () => {
         <div className="test_page">
             <Header title="Тест на определение IQ" img={true}/>
             <section className={active}>
-                <h1 style={{color:"white", textAlign:"center"}}>HEllo</h1>
+                <div className="test__progress">
+                    <div className="test__progress_front"></div>
+                </div>
+                <div className="test__wrap">
+                    <div className="test__window">
+                        <div className="test__tape"></div>
+                    </div>
+                </div>
+                <button className="button test__button">Далее</button>
             </section>
         </div>
     );
