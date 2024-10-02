@@ -1,6 +1,6 @@
 import Header from "../../components/header/Header";
 import { useSelector, useDispatch } from "react-redux";
-import { testPageType, setTestPageActive } from "./testPageSlice";
+import { TestPageType, setTestPageActive } from "./testPageSlice";
 import "../../styles/style.scss";
 import { useEffect, useState } from "react";
 
@@ -8,7 +8,7 @@ const Test = () => {
 
     const [active, setActive] = useState("test");
 
-    const {testPageActive}: any = useSelector<testPageType>(state => state.testPageActive);
+    const {testPageActive}: any = useSelector<TestPageType>(state => state.testPageActive);
 
     useEffect(() => {
         setActive("test active")

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 import { setMenuState } from "../menu/menuSlice";
-import { testPageType } from "../../pages/test/testPageSlice";
+import { TestPageType } from "../../pages/test/testPageSlice";
 
 import blueBrain from "../../assets/img/blue_brain.png";
 
@@ -19,7 +19,7 @@ const Header: FC<headerProps> = (props) => {
     const {title, img} = props;
 
     const [headerTitle, setHeaderTitle] = useState<string>("header__title__wrap")
-    const {testPageActive}: any = useSelector<testPageType>(state => state.testPageActive);
+    const {testPageActive}: any = useSelector<TestPageType>(state => state.testPageActive);
 
     const dispatch = useDispatch();
 

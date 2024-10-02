@@ -1,11 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface testPageType {
+export interface TextQuestionType {
+    id: string;
+    name: string;
+    type: string;
+    title: string;
+    subtitle?: string;
+    img?: string;
+    options: (string | string[])[];
+}
+export interface TestPageType {
     testPageActive: boolean;
+    testLength: number;
+    testQuestion: {};
 }
 
-const initialState: testPageType = {
-    testPageActive: false
+const initialState: TestPageType = {
+    testPageActive: false,
+    testLength: 0,
+    testQuestion: {},
 }
 
 const testPageSlice = createSlice({
