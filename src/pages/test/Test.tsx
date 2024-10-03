@@ -1,17 +1,29 @@
 import Header from "../../components/header/Header";
 import { useSelector, useDispatch } from "react-redux";
-import { TestPageType, setTestPageActive } from "./testPageSlice";
+import { TestPageType, setTestPageActive, fetchTest, fetchTestQuestion } from "./testPageSlice";
 import "../../styles/style.scss";
 import { useEffect, useState } from "react";
 
 const Test = () => {
 
     const [active, setActive] = useState("test");
+    
+    const {testPageActive, testLength, testLoadingState, testQuestionID, testQuestionObject}: any = useSelector<TestPageType>(state => state.testPageActive);
 
-    const {testPageActive}: any = useSelector<TestPageType>(state => state.testPageActive);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        setActive("test active")
+        dispatch(fetchTest());
+        dispatch(fetchTestQuestion(testQuestionID));
+    }, []);
+
+    useEffect(() => {
+        console.log(testLength);
+        console.log(testQuestionObject);
+    }, [/* testLength,  */testQuestionObject])
+    
+    useEffect(() => {
+        setActive("test active");
     }, [testPageActive]);
 
     return (
