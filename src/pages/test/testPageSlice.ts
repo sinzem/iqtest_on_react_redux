@@ -22,7 +22,7 @@ const initialState: TestPageType = {
     testPageActive: false,
     testLoadingState: "idle",
     testLength: 0,
-    testQuestionID: 1,
+    testQuestionID: 0,
     testQuestionObject: {},
 }
 
@@ -48,7 +48,8 @@ const testPageSlice = createSlice({
     initialState,
     reducers: {
         setTestPageActive: state => {state.testPageActive = true},
-        setTestPageNotActive: state => {state.testPageActive = false}
+        setTestPageNotActive: state => {state.testPageActive = false},
+        setTestQuestionID: (state, action) => {state.testQuestionID = action.payload}
     },
     extraReducers: (builder) => { 
         builder
@@ -78,5 +79,6 @@ export default reducer;
 
 export const {
     setTestPageActive, 
-    setTestPageNotActive
+    setTestPageNotActive, 
+    setTestQuestionID
 } = actions;
